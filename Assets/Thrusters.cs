@@ -7,6 +7,7 @@ public class Thrusters : MonoBehaviour
 {
     
     public float verticalRot, horizontalRot, baseForce, thrust, rotRate, thrustRate;
+    public Transform tracker;
     public Text	 v, h, t;
 
     void Update()
@@ -28,6 +29,13 @@ public class Thrusters : MonoBehaviour
 
     	verticalRot += Input.GetAxis("Vertical") * rotRate * Time.deltaTime;
     	horizontalRot += Input.GetAxis("Horizontal") * rotRate * Time.deltaTime;
+
+    	tracker.eulerAngles = new Vector3(verticalRot, horizontalRot, 0f);
+    	Vector3 temp = tracker.TransformVector(0, 0, 1);
+
+    	temp = temp * thrust * baseForce * Time.deltaTime;
+
+    	rigidbody.addForce(temp);
 
     }
 }
