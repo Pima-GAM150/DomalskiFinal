@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class Thrusters : MonoBehaviour
 {
-    
+ 	
+ 	public int lives;   
     public float verticalRot, horizontalRot, baseForce, thrust, rotRate, thrustRate;
     public Transform tracker;
-    public Text	 v, h, t;
+    public Text	 v, h, t, l;
 
     void Update()
     {
@@ -16,12 +17,13 @@ public class Thrusters : MonoBehaviour
     	v.text = "" +verticalRot;
     	h.text = "" + horizontalRot;
     	t.text = "" + (100 * thrust);
+    	l.text = "" + lives;
 
     	if(Input.GetKey(KeyCode.LeftShift) && thrust < 1f){
 
     		thrust += thrustRate * Time.deltaTime;
 
-    	} else if(Input.GetKey(KeyCode.LeftAlt) && thrust > -1f){
+    	} else if(Input.GetKey(KeyCode.LeftControl) && thrust > -1f){
 
     		thrust -= thrustRate * Time.deltaTime;
 
@@ -35,7 +37,24 @@ public class Thrusters : MonoBehaviour
 
     	temp = temp * thrust * baseForce * Time.deltaTime;
 
-    	rigidbody.addForce(temp);
+    	GetComponent<Rigidbody>().AddForce(temp);
 
     }
+
+    void OnCollisionEnter(Collision hit){
+
+    	if(hit.tag.Equals("Obstacle")){
+
+    		lives--;
+    		if(lives < 0){
+
+    			GameOver();
+
+    		}
+
+    	}
+
+    }
+
+    void GameOver(){}
 }
