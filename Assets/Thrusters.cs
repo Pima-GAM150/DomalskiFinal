@@ -16,7 +16,18 @@ public class Thrusters : MonoBehaviour
     	h.text = "" + horizontalRot;
     	t.text = "" + (100 * thrust);
 
-    	if(Input.GetKey(KeyCode.shift))
+    	if(Input.GetKey(KeyCode.LeftShift) && thrust < 1f){
+
+    		thrust += thrustRate * Time.deltaTime;
+
+    	} else if(Input.GetKey(KeyCode.LeftAlt) && thrust > -1f){
+
+    		thrust -= thrustRate * Time.deltaTime;
+
+    	}
+
+    	verticalRot += Input.GetAxis("Vertical") * rotRate * Time.deltaTime;
+    	horizontalRot += Input.GetAxis("Horizontal") * rotRate * Time.deltaTime;
 
     }
 }
