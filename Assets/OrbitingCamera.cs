@@ -9,7 +9,7 @@ public class OrbitingCamera : MonoBehaviour
     private Vector3 offset;
   
     void Start () {
-        offset = new Vector3(transform.parent.position.x, transform.parent.position.y + 8.0f, transform.parent.position.z + 7.0f);
+        offset = new Vector3(0, 2, -6/*transform.parent.position.x, transform.parent.position.y, transform.parent.position.z*/);
     }
   
     void Update(){

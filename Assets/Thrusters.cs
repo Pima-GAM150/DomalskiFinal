@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Thrusters : MonoBehaviour
 {
@@ -56,5 +57,9 @@ public class Thrusters : MonoBehaviour
 
     }
 
-    void GameOver(){}
+    void GameOver(){
+
+    	SceneManager.LoadScene(0);
+
+    }
 }

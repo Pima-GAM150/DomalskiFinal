@@ -28060,13 +28060,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63af83e79c071874f89aa0de60049757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 0
+  lives: 3
   verticalRot: 0
   horizontalRot: 0
-  baseForce: 40
+  baseForce: 100
   thrust: 0
   rotRate: 60
-  thrustRate: 1
+  thrustRate: 0.3
   tracker: {fileID: 1241987870}
   v: {fileID: 1388201195}
   h: {fileID: 779073646}
