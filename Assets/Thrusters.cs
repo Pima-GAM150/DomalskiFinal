@@ -43,7 +43,7 @@ public class Thrusters : MonoBehaviour
 
     void OnCollisionEnter(Collision hit){
 
-    	if(hit.tag.Equals("Obstacle")){
+    	if(hit.gameObject.tag.Equals("Obstacle")){
 
     		lives--;
     		if(lives < 0){
