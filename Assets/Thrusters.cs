@@ -9,6 +9,8 @@ public class Thrusters : MonoBehaviour
  	
  	public int lives;   
     public float verticalRot, horizontalRot, baseForce, thrust, rotRate, thrustRate;
+    private bool invul;
+    private float timer;
     public Transform tracker;
     public Text	 v, h, t, l;
 
@@ -40,13 +42,23 @@ public class Thrusters : MonoBehaviour
 
     	GetComponent<Rigidbody>().AddForce(temp);
 
+    	if(invul){
+
+    		timer+= Time.deltaTime;
+
+    		if(timer > 2f)
+    			invul = false;
+
+    	}
+
     }
 
     void OnCollisionEnter(Collision hit){
 
-    	if(hit.gameObject.tag.Equals("Obstacle")){
+    	if(hit.gameObject.tag.Equals("Obstacle") && !invul){
 
     		lives--;
+    		invul = true;
     		if(lives < 0){
 
     			GameOver();
